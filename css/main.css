@@ -1,0 +1,58 @@
+body{
+    background-color: whitesmoke;
+}
+
+.b, .b:hover, .b:visited, .b:active{
+    border-color: whitesmoke;
+}
+
+.subs-span
+{
+    color: teal;
+}
+
+.subs-span:hover
+{
+    text-decoration-line: underline;
+    text-decoration-color: teal;
+    cursor: pointer;
+}
+
+strong.article-title{
+    font-family: 'Source Sans Pro', sans-serif;
+    color: rgb(7, 147, 212);
+    text-decoration-color: rgb(7, 147, 212);
+    font-size: 15px;
+}
+
+a.article-b-links, a.article-b-links:link, a.article-b-links:visited, a.article-b-links:hover{
+    color: rgb(7, 147, 212);
+    text-decoration-color: rgb(7, 147, 212);
+}
+
+h3.post-title{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.content-border{
+    border-radius: 5px;
+    border: 1px solid #73AD21;
+    padding: 10px; 
+    background-color: #e6e6e6;
+    opacity: 0.8;
+    color: black;
+    word-wrap: auto;
+    overflow-wrap: normal;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.content{
+    color: black;
+    font-family: 'PT Serif', serif;
+}
+
+.btn-teal{
+    background-color: rgb(7, 147, 212);
+    color: white;
+}
