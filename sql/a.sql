@@ -51,12 +51,3 @@ CREATE TABLE comments(
     FOREIGN KEY (userId) REFERENCES users(id),
     FOREIGN KEY (postID) REFERENCES posts(id)
 );
-
-INSERT INTO users(username, pass, email) VALUES ("berni","123","000@mail.com");
-INSERT INTO users(username, pass, email) VALUES ("test","123","999@mail.com");
-
-INSERT INTO subreddit(sname, descp, subscribers) VALUES ("sub 1", "descp 1", 2);
-INSERT INTO subreddit(sname, descp, subscribers) VALUES ("sub 2", "descp 2", 0);
-
-INSERT INTO subscriptions VALUES (1,1);
-INSERT INTO subscriptions VALUES (2,1);

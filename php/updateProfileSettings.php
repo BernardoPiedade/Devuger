@@ -28,6 +28,9 @@
 
     function changeHeader($new_username)
     {
+        session_destroy();
+        session_start();
+        $_SESSION['username'] = $new_username;
         header("location: user.php?username=" . $new_username . "");
     }
 ?>
