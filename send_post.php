@@ -51,7 +51,7 @@ if (isset($_GET['logout'])) {
                                 $row = mysqli_fetch_assoc($r);
                                 $id = $row['id'];
         
-                                $query = "SELECT DISTINCT(sname) FROM subreddit WHERE id IN(SELECT subId FROM subscriptions WHERE userId = '$id') ORDER BY sname LIMIT 20";
+                                $query = "SELECT DISTINCT(sname) FROM subforum WHERE id IN(SELECT subId FROM subscriptions WHERE userId = '$id') ORDER BY sname LIMIT 20";
                                 $q = mysqli_query($db, $query);
 
                                 $subs = array();

@@ -3,7 +3,7 @@
 
     $comment_content  = "";
 
-    $db = mysqli_connect('localhost', 'root', 'mysql', 'r_reddit');
+    $db = mysqli_connect('localhost', 'root', 'mysql', 'devuger');
 
     $u = $_SESSION['username'];
 

@@ -10,7 +10,7 @@
                 <div class="col-md-9 py-3">
                     <?php 
 
-                        $query = "SELECT * FROM subreddit ORDER BY numPosts DESC";
+                        $query = "SELECT * FROM subforum ORDER BY numPosts DESC";
                         $q = mysqli_query($db, $query);
                     
                         if(mysqli_num_rows($q) > 0)

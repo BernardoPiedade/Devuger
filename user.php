@@ -13,6 +13,7 @@ $u = $rowd['username'];
 $descp = $rowd['descp'];
 $color = $rowd['color'];
 $creationDate = $rowd['creationDate'];
+$userRank = $rowd['uRank'];
 
 $sub_color = $rsd['color'];
 
@@ -32,30 +33,17 @@ if (isset($_GET['logout'])) {
 <main>
 	<div class="container py-4">
 		<div class="row">
-			<div class="col-md-3">
-				<svg class="bd-placeholder-img mr-2 rounded mt-3" style="opacity: 0.7;filter: alpha(opacity=70);" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="">
-					<title>Profile: <?php echo $username; ?></title>
-					<rect width="100%" height="100%" fill="<?php echo $color; ?>" /><text x="50%" y="50%" fill="" dy=".3em"></text>
-				</svg>
-				<hr class="border-bottom border-gray">
+			<div class="col-md-9">
 
-				<?php if ($username == $logedUser) : ?>
-
-					<p><a href="#" id="Show_Edit_Username">Edit Username</a></p>
-					<p><a href="#" id="Show_Edit_Password">Edit Password</a></p>
-					<p><a href="#" id="Show_Edit_Email">Edit Email</a></p>
-					<p><a href="#" id="Show_Edit_Description">Edit Description</a></p>
-					<p><a href="#" id="Show_Edit_Profile_Color">Edit Profile Color</a></p>
-
-				<?php endif ?>
-			</div>
-			<div class="col-md-1"></div>
-			<div class="col-md-5">
-				<h2><b><?php echo $username; ?></b></h2>
-				<small>Member since: <?php echo $creationDate; ?></small>
+				<h2><svg class="bd-placeholder-img mr-2 rounded" style="opacity: 0.7;filter: alpha(opacity=70);" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="">
+						<title>Profile: <?php echo $username; ?></title>
+						<rect width="100%" height="100%" fill="<?php echo $color; ?>" /><text x="50%" y="50%" fill="" dy=".3em"></text>
+					</svg><b><?php echo $username; ?></b></h2>
+				<small>Rank: <?php echo $userRank; ?></small>
+				<small>&nbsp;&nbsp; | &nbsp;&nbsp;</small><small>Member since: <?php echo $creationDate; ?></small>
 				<div class="descp py-3 mb-3">
 					<div class="content-border">
-						<p class="pl-2 content"><?php echo $descp; ?></p>
+						<p class="pl-2 content"><?php echo nl2br($descp); ?></p>
 					</div>
 				</div>
 				<h3>Latest post made:</h3>
@@ -68,8 +56,10 @@ if (isset($_GET['logout'])) {
 				if (mysqli_num_rows($get_user_posts) > 0) {
 					while ($get_user_posts_row = mysqli_fetch_assoc($get_user_posts)) {
 
-						$name = $get_user_posts_row['subredditName'];
-						$q2 = "SELECT * FROM subreddit WHERE sname = '$name'";
+
+
+						$subforumId = $get_user_posts_row['subforumId'];
+						$q2 = "SELECT * FROM subforum WHERE id = '$subforumId'";
 						$rs = mysqli_query($db, $q2);
 						$row2 = mysqli_fetch_assoc($rs);
 						$sub_color = $row2['color'];
@@ -97,7 +87,7 @@ if (isset($_GET['logout'])) {
 				<hr class="border-bottom border-gray">
 
 				<?php
-				$query_get_followed_forums = "SELECT * FROM subreddit WHERE id IN (SELECT subId FROM subscriptions WHERE userId = '$u_ID') ORDER BY id DESC";
+				$query_get_followed_forums = "SELECT * FROM subforum WHERE id IN (SELECT subId FROM subscriptions WHERE userId = '$u_ID') ORDER BY id DESC";
 				$get_user_followed_forums = mysqli_query($db, $query_get_followed_forums);
 
 				if (mysqli_num_rows($get_user_followed_forums) > 0) {
@@ -108,6 +98,23 @@ if (isset($_GET['logout'])) {
 				?>
 
 			</div>
+		</div>
+
+		<div class="row">
+			<?php if ($username == $logedUser) : ?>
+				<div class="col-md-12 text-center">
+					<h5>Settings</h5>
+					<hr class="border-bottom border-gray">
+
+					<p><a href="#" id="Show_Edit_Username">Edit Username</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+						<a href="#" id="Show_Edit_Password">Edit Password</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+						<a href="#" id="Show_Edit_Email">Edit Email</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+						<a href="#" id="Show_Edit_Description">Edit Description</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+						<a href="#" id="Show_Edit_Profile_Color">Edit Profile Color</a></p>
+
+
+				</div>
+			<?php endif ?>
 		</div>
 
 		<?php if ($username == $logedUser) : ?>

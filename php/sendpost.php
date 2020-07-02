@@ -16,15 +16,15 @@
         $id = $row['id'];
 
         //get subreddit details
-        $s = "SELECT * FROM subreddit WHERE sname = '$sub'";
+        $s = "SELECT * FROM subforum WHERE sname = '$sub'";
         $r2 = mysqli_query($db, $s);
         $row2 = mysqli_fetch_assoc($r2);
         $sid = $row2['id'];
 
-        $q = "INSERT INTO posts (userId,subredditId,title,content,uploadDate,numComments) VALUES ('$id','$sid','$title','$content',NOW(),0)";
+        $q = "INSERT INTO posts (userId,subforumId,title,content,uploadDate,numComments) VALUES ('$id','$sid','$title','$content',NOW(),0)";
         $query = mysqli_query($db, $q);
 
-        $f = "UPDATE subreddit SET numPosts = numPosts + 1 WHERE id = $sid";
+        $f = "UPDATE subforum SET numPosts = numPosts + 1 WHERE id = $sid";
         $d = mysqli_query($db, $f);
         
         changeHeader($db,$title);

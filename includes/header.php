@@ -35,9 +35,6 @@
                         <a class="nav-link" href="index.php">Home Page</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="popular.php">Popular Posts</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="findforums.php">Find New Forums</a>
                     </li>
 
