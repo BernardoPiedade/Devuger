@@ -106,170 +106,93 @@ if (isset($_GET['logout'])) {
 					<h5>Settings</h5>
 					<hr class="border-bottom border-gray">
 
-					<p><a href="#" id="Show_Edit_Username">Edit Username</a>&nbsp;&nbsp; | &nbsp;&nbsp;
-						<a href="#" id="Show_Edit_Password">Edit Password</a>&nbsp;&nbsp; | &nbsp;&nbsp;
-						<a href="#" id="Show_Edit_Email">Edit Email</a>&nbsp;&nbsp; | &nbsp;&nbsp;
-						<a href="#" id="Show_Edit_Description">Edit Description</a>&nbsp;&nbsp; | &nbsp;&nbsp;
-						<a href="#" id="Show_Edit_Profile_Color">Edit Profile Color</a></p>
+					<p><a href="javascript:void();" id="Show_Edit_Username">Edit Username</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+						<a href="javascript:void();" id="Show_Edit_Password">Edit Password</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+						<a href="javascript:void();" id="Show_Edit_Email">Edit Email</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+						<a href="javascript:void();" id="Show_Edit_Description">Edit Description</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+						<a href="javascript:void();" id="Show_Edit_Profile_Color">Edit Profile Color</a></p>
 
 
 				</div>
+
 			<?php endif ?>
 		</div>
-
 		<?php if ($username == $logedUser) : ?>
-
-			<!--- Show_Edit_Username --->
-			<div class="modal fade" id="Show_Edit_Username_Modal" role="dialog">
-				<div class="modal-dialog">
-
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title">Edit Username</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6 text-center mt-4" id="Show_Edit_Username_Div">
+					<form action="user.php?username=<?php echo $username; ?>" method="post">
+						<div class="input-group">
+							<div class="input-group-text">Current username</div>
+							<input class="form-control" type="text" name="current_username" required>
 						</div>
-						<div class="modal-body">
-							<form action="user.php?username=<?php $username; ?>" method="post">
-								<div class="input-group">
-									<div class="input-group-text">Current username</div>
-									<input class="form-control" type="text" name="current_username" required>
-								</div>
-								<br>
-								<div class="input-group">
-									<div class="input-group-text">New username</div>
-									<input class="form-control" type="text" name="new_username" required>
-								</div>
-								<br>
-								<button type="submit" class="btn btn-primary float-right" name="save_changes_username">Save changes</button>
-							</form>
-							<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+						<br>
+						<div class="input-group">
+							<div class="input-group-text">New username</div>
+							<input class="form-control" type="text" name="new_username" required>
 						</div>
-					</div>
-
+						<br>
+						<button type="submit" id="Submit_New_Username" class="btn btn-primary float-right" name="save_changes_username">Save changes</button>
+					</form>
 				</div>
-			</div>
-
-			<!--- Show_Edit_Password --->
-			<div class="modal fade" id="Show_Edit_Password_Modal" role="dialog">
-				<div class="modal-dialog">
-
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title">Edit Password</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<div class="col-md-6 text-center mt-4" id="Show_Edit_Password_Div">
+					<form action="user.php?username=<?php echo $username; ?>" method="post">
+						<?php include('php/errors.php'); ?>
+						<div class="input-group">
+							<div class="input-group-text">Current password</div>
+							<input class="form-control" type="password" name="current_password" required>
 						</div>
-						<div class="modal-body">
-							<form action="user.php?username=<?php $username; ?>" method="post">
-								<div class="input-group">
-									<div class="input-group-text">Current password</div>
-									<input class="form-control" type="password" name="current_password" required>
-								</div>
-								<br>
-								<div class="input-group">
-									<div class="input-group-text">New password</div>
-									<input class="form-control" type="password" name="new_password" required>
-								</div>
-								<br>
-								<button type="submit" class="btn btn-primary float-right" name="save_changes_password">Save changes</button>
-							</form>
-							<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+						<br>
+						<div class="input-group">
+							<div class="input-group-text">New password</div>
+							<input class="form-control" type="password" name="new_password" required>
 						</div>
-
-					</div>
+						<br>
+						<button type="submit" id="Submit_New_Password" class="btn btn-primary float-right" name="save_changes_password">Save changes</button>
+					</form>
 				</div>
-			</div>
-
-			<!--- Show_Edit_Email --->
-			<div class="modal fade" id="Show_Edit_Email_Modal" role="dialog">
-				<div class="modal-dialog">
-
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title">Edit Email</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<div class="col-md-6 text-center mt-4" id="Show_Edit_Email_Div">
+					<form action="user.php?username=<?php echo $username; ?>" method="post">
+						<div class="input-group">
+							<div class="input-group-text">Current email</div>
+							<input class="form-control" type="text" name="current_email" required>
 						</div>
-						<div class="modal-body">
-							<form action="user.php?username=<?php $username; ?>" method="post">
-								<div class="input-group">
-									<div class="input-group-text">Current email</div>
-									<input class="form-control" type="text" name="current_email" required>
-								</div>
-								<br>
-								<div class="input-group">
-									<div class="input-group-text">New email</div>
-									<input class="form-control" type="text" name="new_email" required>
-								</div>
-								<br>
-								<button type="submit" class="btn btn-primary float-right" name="save_changes_email">Save changes</button>
-							</form>
-							<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+						<br>
+						<div class="input-group">
+							<div class="input-group-text">New email</div>
+							<input class="form-control" type="text" name="new_email" required>
 						</div>
-
-					</div>
+						<br>
+						<button type="submit" id="Submit_New_Email" class="btn btn-primary float-right" name="save_changes_email">Save changes</button>
+					</form>
 				</div>
-			</div>
-
-			<!--- Show_Edit_Description --->
-			<div class="modal fade" id="Show_Edit_Description_Modal" role="dialog">
-				<div class="modal-dialog">
-
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title">Edit Description</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<div class="col-md-6 text-center mt-4" id="Show_Edit_Description_Div">
+					<form action="user.php?username=<?php echo $username; ?>" method="post">
+						<div class="input-group">
+							<textarea class="form-control rounded-0" rows="5" name="user_edit_description" required><?php echo $descp; ?></textarea>
 						</div>
-						<div class="modal-body">
-							<form action="user.php?username=<?php $username; ?>" method="post">
-								<div class="input-group">
-									<textarea class="form-control rounded-0" rows="5" name="user_edit_description" required><?php echo $descp; ?></textarea>
-								</div>
-								<br>
-								<button type="submit" class="btn btn-primary float-right" name="save_changes_username">Save changes</button>
-							</form>
-							<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-						</div>
-
-					</div>
+						<br>
+						<button type="submit" id="Submit_New_Description" class="btn btn-primary float-right" name="save_changes_username">Save changes</button>
+					</form>
 				</div>
-			</div>
-
-			<!--- Show_Edit_Profile_Color --->
-			<div class="modal fade" id="Show_Edit_Profile_Color_Modal" role="dialog">
-				<div class="modal-dialog">
-
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title">Edit Profile Color</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<div class="col-md-6 text-center mt-4" id="Show_Edit_Color_Div">
+					<form action="user.php?username=<?php echo $username; ?>" method="post">
+						<div class="input-group">
+							<div class="input-group-text">Current username</div>
+							<input class="form-control" type="text" name="current_username" required>
 						</div>
-						<div class="modal-body">
-							<form action="user.php?username=<?php $username; ?>" method="post">
-								<div class="input-group">
-									<div class="input-group-text">Current username</div>
-									<input class="form-control" type="text" name="current_username" required>
-								</div>
-								<br>
-								<div class="input-group">
-									<div class="input-group-text">New username</div>
-									<input class="form-control" type="text" name="new_username" required>
-								</div>
-								<br>
-								<button type="submit" class="btn btn-primary float-right" name="save_changes_username">Save changes</button>
-							</form>
-							<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+						<br>
+						<div class="input-group">
+							<div class="input-group-text">New username</div>
+							<input class="form-control" type="text" name="new_username" required>
 						</div>
-
-					</div>
+						<br>
+						<button type="submit" id="Submit_New_Color" class="btn btn-primary float-right" name="save_changes_username">Save changes</button>
+					</form>
 				</div>
+				<div class="col-md-3"></div>
 			</div>
-
 		<?php endif ?>
-
 	</div>
 </main>
 

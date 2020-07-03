@@ -5,6 +5,12 @@
 
     $logedUser = $_SESSION['username'];
 
+    //initiate vars
+    $current_password = "";
+    $new_password = "";
+
+    $errors = array(); 
+
     if(isset($_POST['save_changes_username']))
     {
         $current_username = mysqli_real_escape_string($db, $_POST['current_username']);
@@ -31,17 +37,29 @@
         $current_password = mysqli_real_escape_string($db, $_POST['current_password']);
         $new_password = mysqli_real_escape_string($db, $_POST['new_password']);
 
+        if (empty($current_password)) {
+            array_push($errors, "Current password is required");
+        }
+        if(empty($new_password)){
+            array_push($errors, "New password is required");
+        }
+
         $md5_current_password = md5($current_password);
         $password = md5($new_password);
 
-        $query = "SELECT * FROM users WHERE username='$logedUser' AND pass='$current_password'";
+        $query = "SELECT * FROM users WHERE username='$logedUser'";
         $results = mysqli_query($db, $query);
-        if (mysqli_num_rows($results) == 1) {
-            $change_password_query = "UPDATE users SET pass='$password' WHERE pass='$md5_current_password'";
-            $r = mysqli_query($db, $change_password_query);
-        }
+        $r_results = mysqli_fetch_assoc($results);
+        $user_current_password_db = $r_results['pass'];
 
-        changeHeader($logedUser);
+        if($md5_current_password != $user_current_password_db){
+            array_push($errors, "Current password does not match our database");
+        }else if($md5_current_password == $user_current_password_db)
+        {
+            $change_password_query = "UPDATE users SET pass='$password' WHERE username='$logedUser'";
+            $r = mysqli_query($db, $change_password_query);
+            changeHeader($logedUser);
+        }
     }
 
     function changeHeader($new_username)

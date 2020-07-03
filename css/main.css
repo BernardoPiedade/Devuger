@@ -56,3 +56,5 @@ h3.post-title{
     background-color: rgb(7, 147, 212);
     color: white;
 }
+
+.is-active { display: block; }

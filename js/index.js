@@ -7,24 +7,94 @@ function clicado(id)
 // Logged user profile settings
 
 $(document).ready(function(){
+
+    //hide things when loaded
+    $("#Show_Edit_Username_Div").css("display", "none");
+    $("#Show_Edit_Password_Div").css("display", "none");
+    $("#Show_Edit_Email_Div").css("display", "none");
+    $("#Show_Edit_Description_Div").css("display", "none");
+    $("#Show_Edit_Color_Div").css("display", "none");
+
+
     $("#Show_Edit_Username").click(function () {
-        $("#Show_Edit_Username_Modal").modal();
+        //show
+        $("#Show_Edit_Username_Div").css("display", "block");
+
+        //hide
+        $("#Show_Edit_Password_Div").css("display", "none");
+        $("#Show_Edit_Email_Div").css("display", "none");
+        $("#Show_Edit_Description_Div").css("display", "none");
+        $("#Show_Edit_Color_Div").css("display", "none");
     });
 
     $("#Show_Edit_Password").click(function () {
-        $("#Show_Edit_Password_Modal").modal();
+        //show
+        $("#Show_Edit_Password_Div").css("display", "block");
+
+        //hide
+        $("#Show_Edit_Username_Div").css("display", "none");
+        $("#Show_Edit_Email_Div").css("display", "none");
+        $("#Show_Edit_Description_Div").css("display", "none");
+        $("#Show_Edit_Color_Div").css("display", "none");
     });
 
     $("#Show_Edit_Email").click(function () {
-        $("#Show_Edit_Email_Modal").modal();
+        //show
+        $("#Show_Edit_Email_Div").css("display", "block");
+
+        //hide
+        $("#Show_Edit_Username_Div").css("display", "none");
+        $("#Show_Edit_Password_Div").css("display", "none");
+        $("#Show_Edit_Description_Div").css("display", "none");
+        $("#Show_Edit_Color_Div").css("display", "none");
     });
 
     $("#Show_Edit_Description").click(function () {
-        $("#Show_Edit_Description_Modal").modal();
+        //show
+        $("#Show_Edit_Description_Div").css("display", "block");
+        
+        //hide
+        $("#Show_Edit_Username_Div").css("display", "none");
+        $("#Show_Edit_Password_Div").css("display", "none");
+        $("#Show_Edit_Email_Div").css("display", "none");
+        $("#Show_Edit_Color_Div").css("display", "none");
     });
 
     $("#Show_Edit_Profile_Color").click(function () {
-        $("#Show_Edit_Profile_Color_Modal").modal();
+        //show
+        $("#Show_Edit_Color_Div").css("display", "block");
+
+        //hide
+        $("#Show_Edit_Username_Div").css("display", "none");
+        $("#Show_Edit_Password_Div").css("display", "none");
+        $("#Show_Edit_Email_Div").css("display", "none");
+        $("#Show_Edit_Description_Div").css("display", "none");
+    });
+
+    //----------------------------------//
+    $("#Submit_New_Username").click(function () {
+        $("#Show_Edit_Username_Div").css("display", "block");
+
+        $('#Show_Edit_Username_Div').addClass('is-active');
+       
+    });
+    
+    $("#Submit_New_Password").click(function () {
+        $("#Show_Edit_Password_Div").css("display", "block");
+
+        $('#Show_Edit_Password_Div').addClass('is-active');
+    });
+
+    $("#Submit_New_Email").click(function () {
+        $("#Show_Edit_Email_Div").css("display", "block");
+    });
+
+    $("#Submit_New_Description").click(function () {
+        $("#Show_Edit_Description_Div").css("display", "block");
+    });
+
+    $("#Submit_New_Color").click(function () {
+        $("#Show_Edit_Color_Div").css("display", "block");
     });
 });
 
