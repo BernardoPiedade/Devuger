@@ -8,7 +8,7 @@ if (isset($_SESSION['username'])) {
 ?>
 <?php include('includes/header.php'); ?>
 
-<main>
+<main class="content-wrapper">
     <div class="container">
         <div class="row">
             <div class="col-md-6 py-4">

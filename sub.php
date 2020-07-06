@@ -62,11 +62,13 @@ $total_num_of_pages = ceil($total_posts / $total_posts_per_page);
 
 if (isset($_POST['unsubscribe'])) {
     $unsubscribe_user = mysqli_query($db, "DELETE FROM subscriptions WHERE userId='$logged_userId' AND subId='$f_ID'");
+    $minus = mysqli_query($db, "UPDATE subforum SET subscribers = subscribers - 1 WHERE id='$f_ID'");
     echo "<meta http-equiv='refresh' content='0'>";
 }
 
 if (isset($_POST['subscribe'])) {
     $subscribe_user = mysqli_query($db, "INSERT INTO subscriptions (userId, subId) VALUES ('$logged_userId', '$f_ID')");
+    $plus = mysqli_query($db, "UPDATE subforum SET subscribers = subscribers + 1 WHERE id='$f_ID'");
     echo "<meta http-equiv='refresh' content='0'>";
 }
 
@@ -78,7 +80,7 @@ if (isset($_GET['logout'])) {
 <?php include('php/updateProfileSettings.php'); ?>
 <?php include('includes/header.php'); ?>
 
-<main>
+<main class="content-wrapper">
     <div class="container py-4">
         <div class="row">
             <div class="col-md-9">
@@ -138,9 +140,9 @@ if (isset($_GET['logout'])) {
             <div class="col-md-3 py-5">
                 <div class="mb-4">
                     <?php if ($user_is_subscribed == true) : ?>
-                        <form action="sub.php?r=<?php echo $forum_name; ?>" method="post"><button class="btn btn-primary w-100" type="submit" name="unsubscribe">You're subscribed</button></form>
+                        <form action="sub.php?r=<?php echo $forum_name; ?>" method="post"><button class="btn btn-teal w-100" type="submit" name="unsubscribe">You're subscribed</button></form>
                     <?php elseif ($user_is_subscribed == false) : ?>
-                        <form action="sub.php?r=<?php echo $forum_name; ?>" method="post"><button class="btn btn-primary w-100" type="submit" name="subscribe">Subscribe</button></form>
+                        <form action="sub.php?r=<?php echo $forum_name; ?>" method="post"><button class="btn btn-teal w-100" type="submit" name="subscribe">Subscribe</button></form>
                     <?php endif ?>
                 </div>
                 

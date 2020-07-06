@@ -46,7 +46,7 @@ if (isset($_GET['logout'])) {
 ?>
 <?php include('includes/header.php'); ?>
 
-<main>
+<main class="content-wrapper">
     <div class="container">
         <div class="row">
             <div class="col-md-9 py-5">

@@ -51,7 +51,7 @@ if (isset($_GET['logout'])) {
 <?php include('php/updateProfileSettings.php'); ?>
 <?php include('includes/header.php'); ?>
 
-<main>
+<main class="content-wrapper">
 	<div class="container py-4">
 		<div class="row">
 			<div class="col-md-9">
@@ -130,7 +130,7 @@ if (isset($_GET['logout'])) {
 
 		<div class="row">
 			<?php if ($username == $logedUser) : ?>
-				<div class="col-md-12 text-center">
+				<div class="col-md-12 text-center mt-5 py-5">
 					<h5>Settings</h5>
 					<hr class="border-bottom border-gray">
 
@@ -160,6 +160,7 @@ if (isset($_GET['logout'])) {
 							<input class="form-control" type="text" name="new_username" required>
 						</div>
 						<br>
+						<button class="btn btn-primary float-right ml-2" type="button" id="close_username">Close</button>
 						<button type="submit" id="Submit_New_Username" class="btn btn-primary float-right" name="save_changes_username">Save changes</button>
 					</form>
 				</div>
@@ -175,6 +176,7 @@ if (isset($_GET['logout'])) {
 							<input class="form-control" type="password" name="new_password" required>
 						</div>
 						<br>
+						<button class="btn btn-primary float-right ml-2" type="button" id="close_password">Close</button>
 						<button type="submit" id="Submit_New_Password" class="btn btn-primary float-right" name="save_changes_password">Save changes</button>
 					</form>
 				</div>
@@ -190,6 +192,7 @@ if (isset($_GET['logout'])) {
 							<input class="form-control" type="email" name="new_email" required>
 						</div>
 						<br>
+						<button class="btn btn-primary float-right ml-2" type="button" id="close_email">Close</button>
 						<button type="submit" id="Submit_New_Email" class="btn btn-primary float-right" name="save_changes_email">Save changes</button>
 					</form>
 				</div>
@@ -199,16 +202,18 @@ if (isset($_GET['logout'])) {
 							<textarea class="form-control rounded-0" rows="5" name="user_edit_description"><?php echo nl2br($descp); ?></textarea>
 						</div>
 						<br>
+						<button class="btn btn-primary float-right ml-2" type="button" id="close_descp">Close</button>
 						<button type="submit" id="Submit_New_Description" class="btn btn-primary float-right" name="save_changes_descp">Save changes</button>
 					</form>
 				</div>
 				<div class="col-md-6 text-center mt-4" id="Show_Edit_Color_Div">
 					<form action="user.php?username=<?php echo $username; ?>" method="post">
-						
-							<input type="text" id="hex" style="display: none" name="hexcolor">
-							<input type="color" id="color">
-						
+
+						<input type="text" id="hex" style="display: none" name="hexcolor">
+						<input type="color" id="color">
+
 						<br>
+						<button class="btn btn-primary float-right ml-2" type="button" id="close_color">Close</button>
 						<button type="submit" id="Submit_New_Color" class="btn btn-primary float-right" name="save_changes_color">Save changes</button>
 					</form>
 				</div>

@@ -1,5 +1,74 @@
-body{
+html, body{
     background-color: whitesmoke;
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrapper{
+    flex: 1 0 auto;
+}
+
+.footer{
+    flex-shrink: 0;
+    background-color: #1b1b1b;
+}
+
+.green, a.green:link, a.green:visited, a.green:hover{
+    color: #71db71;
+}
+
+.btn-green{
+    background-color: #71db71;
+    border-color: #71db71;
+    color: white;
+}
+
+.btn-green:hover{
+    background-color: #73AD21;
+    border-color: #73AD21;
+}
+
+.navbar-dark{
+    background-color: #1b1b1b !important;
+}
+
+a.nav-link, a.nav-link:visited, a.nav-link:link{
+    color: white !important;
+}
+
+a.nav-link:hover{
+    color: #71db71 !important;
+}
+
+.dropdown-menu{
+    background-color: #1b1b1b;
+}
+
+.dropdown-item{
+    color: white;
+}
+
+.dropdown-item:hover{
+    background-color: #1b1b1b;
+    color: #71db71;
+}
+
+.btn-outline-secondary{
+    background-color: #71db71;
+    color: #1b1b1b;
+}
+
+.btn-outline-secondary:hover{
+    background-color: #73AD21;
+    color: white;
+}
+
+a:hover{
+    color: #73AD21;
 }
 
 .b, .b:hover, .b:visited, .b:active{
@@ -47,13 +116,22 @@ h3.post-title{
     overflow-x: hidden;
 }
 
+.form-control, .form-control:focus{
+    border: 1px solid #73AD21;
+    
+}
+
 .content{
     color: black;
     font-family: 'PT Serif', serif;
 }
 
 .btn-teal{
-    background-color: rgb(7, 147, 212);
+    background-color: #73AD21;
+    color: white;
+}
+
+.btn-teal:hover{
     color: white;
 }
 

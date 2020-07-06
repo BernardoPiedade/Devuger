@@ -20,7 +20,7 @@ if (isset($_GET['search'])) {
 
 ?>
 
-<main>
+<main class="content-wrapper">
     <div class="container">
         <div class="row">
             <div class="col-md-9 py-3">
@@ -68,8 +68,7 @@ if (isset($_GET['search'])) {
                     }
                 }
 
-                if(mysqli_num_rows($run_users_query) <= 0 && mysqli_num_rows($run_forums_query) <= 0)
-                {
+                if (mysqli_num_rows($run_users_query) <= 0 && mysqli_num_rows($run_forums_query) <= 0) {
                     echo '<h5 class="text-center">No users or sub-forums match your search :/ try another word buddy.</h5>';
                 }
 
