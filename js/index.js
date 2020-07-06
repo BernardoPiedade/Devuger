@@ -98,3 +98,12 @@ $(document).ready(function(){
     });
 });
 
+// colors
+
+let colorInput = document.querySelector("#color");
+let hex = document.querySelector("#hex");
+
+colorInput.addEventListener('input', () => {
+    let color = colorInput.value;
+    hex.value = color;
+});

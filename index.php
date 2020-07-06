@@ -128,7 +128,7 @@ if (isset($_GET['logout'])) {
                         <?php endif ?>
 
                         <!--- Next --->
-                        <?php if ($page_num != $total_num_of_pages) : ?>
+                        <?php if ($page_num < $total_num_of_pages) : ?>
                             <li class="page-item"><a class="page-link" <?php echo "href=?page_num=$next_page"; ?>>Next</a></li>
                         <?php endif ?>
                     </ul>

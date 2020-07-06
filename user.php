@@ -35,7 +35,7 @@ $previous_page = $page_num - 1;
 $next_page = $page_num + 1;
 
 // Get user total num of posts
-$query_user_num_posts = mysqli_query($db,"SELECT COUNT(*) As total_posts FROM posts WHERE userId = '$u_ID'");
+$query_user_num_posts = mysqli_query($db, "SELECT COUNT(*) As total_posts FROM posts WHERE userId = '$u_ID'");
 $total_posts = mysqli_fetch_array($query_user_num_posts);
 $total_posts = $total_posts['total_posts'];
 $total_num_of_pages = ceil($total_posts / $total_posts_per_page);
@@ -105,7 +105,7 @@ if (isset($_GET['logout'])) {
 					<button class="btn btn-primary"><a style="color: white;" <?php echo "href=?username=$username&page_num=$previous_page"; ?>>Prev</a></button>
 				<?php endif ?>
 
-				<?php if($page_num < $total_num_of_pages): ?>
+				<?php if ($page_num < $total_num_of_pages) : ?>
 					<button class="btn btn-primary"><a style="color: white;" <?php echo "href=?username=$username&page_num=$next_page"; ?>>Next</a></button>
 				<?php endif ?>
 
@@ -140,7 +140,7 @@ if (isset($_GET['logout'])) {
 						<a href="javascript:void();" id="Show_Edit_Description">Edit Description</a>&nbsp;&nbsp; | &nbsp;&nbsp;
 						<a href="javascript:void();" id="Show_Edit_Profile_Color">Edit Profile Color</a></p>
 
-
+					<?php include('php/errors.php'); ?>
 				</div>
 
 			<?php endif ?>
@@ -165,7 +165,6 @@ if (isset($_GET['logout'])) {
 				</div>
 				<div class="col-md-6 text-center mt-4" id="Show_Edit_Password_Div">
 					<form action="user.php?username=<?php echo $username; ?>" method="post">
-						<?php include('php/errors.php'); ?>
 						<div class="input-group">
 							<div class="input-group-text">Current password</div>
 							<input class="form-control" type="password" name="current_password" required>
@@ -183,12 +182,12 @@ if (isset($_GET['logout'])) {
 					<form action="user.php?username=<?php echo $username; ?>" method="post">
 						<div class="input-group">
 							<div class="input-group-text">Current email</div>
-							<input class="form-control" type="text" name="current_email" required>
+							<input class="form-control" type="email" name="current_email" required>
 						</div>
 						<br>
 						<div class="input-group">
 							<div class="input-group-text">New email</div>
-							<input class="form-control" type="text" name="new_email" required>
+							<input class="form-control" type="email" name="new_email" required>
 						</div>
 						<br>
 						<button type="submit" id="Submit_New_Email" class="btn btn-primary float-right" name="save_changes_email">Save changes</button>
@@ -197,25 +196,20 @@ if (isset($_GET['logout'])) {
 				<div class="col-md-6 text-center mt-4" id="Show_Edit_Description_Div">
 					<form action="user.php?username=<?php echo $username; ?>" method="post">
 						<div class="input-group">
-							<textarea class="form-control rounded-0" rows="5" name="user_edit_description" required><?php echo $descp; ?></textarea>
+							<textarea class="form-control rounded-0" rows="5" name="user_edit_description"><?php echo nl2br($descp); ?></textarea>
 						</div>
 						<br>
-						<button type="submit" id="Submit_New_Description" class="btn btn-primary float-right" name="save_changes_username">Save changes</button>
+						<button type="submit" id="Submit_New_Description" class="btn btn-primary float-right" name="save_changes_descp">Save changes</button>
 					</form>
 				</div>
 				<div class="col-md-6 text-center mt-4" id="Show_Edit_Color_Div">
 					<form action="user.php?username=<?php echo $username; ?>" method="post">
-						<div class="input-group">
-							<div class="input-group-text">Current username</div>
-							<input class="form-control" type="text" name="current_username" required>
-						</div>
+						
+							<input type="text" id="hex" style="display: none" name="hexcolor">
+							<input type="color" id="color">
+						
 						<br>
-						<div class="input-group">
-							<div class="input-group-text">New username</div>
-							<input class="form-control" type="text" name="new_username" required>
-						</div>
-						<br>
-						<button type="submit" id="Submit_New_Color" class="btn btn-primary float-right" name="save_changes_username">Save changes</button>
+						<button type="submit" id="Submit_New_Color" class="btn btn-primary float-right" name="save_changes_color">Save changes</button>
 					</form>
 				</div>
 				<div class="col-md-3"></div>

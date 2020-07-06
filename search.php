@@ -68,6 +68,11 @@ if (isset($_GET['search'])) {
                     }
                 }
 
+                if(mysqli_num_rows($run_users_query) <= 0 && mysqli_num_rows($run_forums_query) <= 0)
+                {
+                    echo '<h5 class="text-center">No users or sub-forums match your search :/ try another word buddy.</h5>';
+                }
+
                 ?>
             </div>
             <?php include('includes/right_side_bar.php'); ?>

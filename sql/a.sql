@@ -22,7 +22,10 @@ CREATE TABLE subforum(
     subscribers INT,
     color VARCHAR(20),
     numPosts INT,
-    creationDate DATE
+    creationDate DATE,
+    createdBy INT,
+    rules TEXT,
+    FOREIGN KEY (createdBy) REFERENCES users(id)
 );
 
 CREATE TABLE posts(
@@ -61,9 +64,9 @@ INSERT INTO users (username, pass, email, descp, color, creationDate, uRank) VAL
 INSERT INTO users (username, pass, email, descp, color, creationDate, uRank) VALUES ('test3', '123', 'test3@test.com', 'This is the description of this user', '#717171',NOW(),0);
 
 /*Subforum*/
-INSERT INTO subforum (sname, descp, subscribers, color, numPosts, creationDate) VALUES ('Sub 1', 'This is the description of this subforum',2,'#eb4034',2,NOW());
-INSERT INTO subforum (sname, descp, subscribers, color, numPosts, creationDate) VALUES ('Sub 2', 'This is the description of this subforum',3,'#eb4034',1,NOW());
-INSERT INTO subforum (sname, descp, subscribers, color, numPosts, creationDate) VALUES ('Sub 3', 'This is the description of this subforum',1,'#eb4034',0,NOW());
+INSERT INTO subforum (sname, descp, subscribers, color, numPosts, creationDate, createdBy, rules) VALUES ('Sub 1', 'This is the description of this subforum',2,'#eb4034',2,NOW(), 1, 'rule');
+INSERT INTO subforum (sname, descp, subscribers, color, numPosts, creationDate, createdBy, rules) VALUES ('Sub 2', 'This is the description of this subforum',3,'#eb4034',1,NOW(), 1, 'rule');
+INSERT INTO subforum (sname, descp, subscribers, color, numPosts, creationDate, createdBy, rules) VALUES ('Sub 3', 'This is the description of this subforum',1,'#eb4034',0,NOW(), 1, 'rule');
 
 /*Posts*/
 INSERT INTO posts (userId, subforumId, title, content, uploadDate, numComments) VALUES (1, 1, 'Post 1', 'This is the content of post 1',NOW(), 0);
