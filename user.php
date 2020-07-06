@@ -22,6 +22,27 @@ $logedUser = $_SESSION['username'];
 <?php
 $title = "Devuger - $username";
 
+// Pagination stuff
+if (isset($_GET['page_num']) && $_GET['page_num'] != "") {
+	$page_num = $_GET['page_num'];
+} else {
+	$page_num = 1;
+}
+
+$total_posts_per_page = 5;
+$offset = ($page_num - 1) * $total_posts_per_page;
+$previous_page = $page_num - 1;
+$next_page = $page_num + 1;
+
+// Get user total num of posts
+$query_user_num_posts = mysqli_query($db,"SELECT COUNT(*) As total_posts FROM posts WHERE userId = '$u_ID'");
+$total_posts = mysqli_fetch_array($query_user_num_posts);
+$total_posts = $total_posts['total_posts'];
+$total_num_of_pages = ceil($total_posts / $total_posts_per_page);
+
+
+// End of pagination
+
 if (isset($_GET['logout'])) {
 	session_destroy();
 	unset($_SESSION['username']);
@@ -50,7 +71,7 @@ if (isset($_GET['logout'])) {
 				<hr class="border-bottom border-gray">
 				<?php
 
-				$query_get_user_posts = "SELECT * FROM posts WHERE userId = '$u_ID' ORDER BY id DESC";
+				$query_get_user_posts = "SELECT * FROM posts WHERE userId = '$u_ID' ORDER BY id DESC LIMIT $offset, $total_posts_per_page";
 				$get_user_posts = mysqli_query($db, $query_get_user_posts);
 
 				if (mysqli_num_rows($get_user_posts) > 0) {
@@ -81,6 +102,14 @@ if (isset($_GET['logout'])) {
 
 
 				?>
+				<?php if ($page_num > 1) : ?>
+					<button class="btn btn-primary"><a style="color: white;" <?php echo "href=?username=$username&page_num=$previous_page"; ?>>Prev</a></button>
+				<?php endif ?>
+
+				<?php if($page_num != $total_num_of_pages): ?>
+					<button class="btn btn-primary"><a style="color: white;" <?php echo "href=?username=$username&page_num=$next_page"; ?>>Next</a></button>
+				<?php endif ?>
+
 			</div>
 			<div class="col-md-3">
 				<h4>Sub-Forums followed:</h4>

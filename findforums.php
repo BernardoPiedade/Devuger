@@ -34,6 +34,7 @@
                         }
                     ?>
                 </div>
+                <?php include('includes/right_side_bar.php'); ?>
             </div>
         </div>
     </main>
