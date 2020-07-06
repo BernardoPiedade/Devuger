@@ -77,13 +77,12 @@ if (isset($_GET['logout'])) {
 				if (mysqli_num_rows($get_user_posts) > 0) {
 					while ($get_user_posts_row = mysqli_fetch_assoc($get_user_posts)) {
 
-
-
 						$subforumId = $get_user_posts_row['subforumId'];
 						$q2 = "SELECT * FROM subforum WHERE id = '$subforumId'";
 						$rs = mysqli_query($db, $q2);
 						$row2 = mysqli_fetch_assoc($rs);
 						$sub_color = $row2['color'];
+						$sub_name = $row2['sname'];
 
 						echo
 							'<article>
@@ -93,7 +92,7 @@ if (isset($_GET['logout'])) {
 												<div class="media-body">
 													<a href="post.php?id=' . $get_user_posts_row['id'] . '&title=' . $get_user_posts_row['title'] . '"><p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
 													<strong class="d-block text-gray-dark article-title">' . $get_user_posts_row['title'] . '</strong></a>' . strip_tags(mb_strimwidth($get_user_posts_row['content'], 0, 125, "..."), '<br/>') . '<br>
-													<small>Posted by: <a class="article-b-links" href="user.php?username=' . $get_user_posts_row['userName'] . '">' . $get_user_posts_row['userName'] . '</a>&nbsp;|&nbsp;Posted in: <a class="article-b-links" href="sub.php?r=' . $get_user_posts_row['subredditName'] . '">' . $get_user_posts_row['subredditName'] . '</a>&nbsp;|&nbsp;<a href="post.php?id=' . $get_user_posts_row['id'] . '&title=' . $get_user_posts_row['title'] . '#comments-seccion">Comments(' . $get_user_posts_row['numComments'] . ')</a></small></p>
+													<small>Posted by: <a class="article-b-links" href="user.php?username=' . $u . '">' . $u . '</a>&nbsp;|&nbsp;Posted in: <a class="article-b-links" href="sub.php?r=' . $sub_name . '">' . $sub_name . '</a>&nbsp;|&nbsp;<a href="post.php?id=' . $get_user_posts_row['id'] . '&title=' . $get_user_posts_row['title'] . '#comments-seccion">Comments(' . $get_user_posts_row['numComments'] . ')</a></small></p>
 												</div>
 											</div>
 										</article>';
@@ -106,7 +105,7 @@ if (isset($_GET['logout'])) {
 					<button class="btn btn-primary"><a style="color: white;" <?php echo "href=?username=$username&page_num=$previous_page"; ?>>Prev</a></button>
 				<?php endif ?>
 
-				<?php if($page_num != $total_num_of_pages): ?>
+				<?php if($page_num < $total_num_of_pages): ?>
 					<button class="btn btn-primary"><a style="color: white;" <?php echo "href=?username=$username&page_num=$next_page"; ?>>Next</a></button>
 				<?php endif ?>
 

@@ -75,6 +75,12 @@ if (isset($_POST['login_user'])) {
         if (mysqli_num_rows($results) == 1) {
           $_SESSION['username'] = $username;
           $_SESSION['success'] = "You are now logged in";
+
+          if (!empty($_POST["remember"])) {
+            setcookie("username", $_POST["username"], time() + 3600);
+            setcookie("password", $password, time() + 3600);
+          }
+
           header('location: index.php');
         }else {
             array_push($errors, "Wrong username/password combination");
