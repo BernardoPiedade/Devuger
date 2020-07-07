@@ -18,39 +18,41 @@ if (isset($_SESSION['username'])) {
                         <div class="input-group-text">Username</div>
                         <input class="form-control" type="text" name="username">
                     </div>
-                    <div class="input-group">
+                    <div class="input-group mt-1">
                         <div class="input-group-text">Email</div>
                         <input class="form-control" type="email" name="email">
                     </div>
-                    <div class="input-group">
+                    <div class="input-group mt-1">
                         <div class="input-group-text">Password</div>
                         <input class="form-control" type="password" name="password_1">
                     </div>
-                    <div class="input-group">
+                    <div class="input-group mt-1">
                         <div class="input-group-text">Confirm password</div>
                         <input class="form-control" type="password" name="password_2">
                     </div>
-                    <div class="input-group">
-                        <button class="form-control btn btn-primary" type="submit" name="reg_user">Register</button>
+                    
+                    <div class="input-group mt-4">
+                        <button class="form-control btn btn-green" type="submit" name="reg_user">Register</button>
                     </div>
                 </form>
             </div>
             <div class="col-md-6 py-4 align-self-center">
                 <form method="post" action="login.php">
                     <?php include('php/errors.php'); ?>
-                    <div class="input-group">
+                    <div class="input-group mt-1">
                         <div class="input-group-text">Username</div>
                         <input class="form-control" type="text" name="username" value="<?php echo $username; ?>">
                     </div>
-                    <div class="input-group">
+                    <div class="input-group mt-1">
                         <div class="input-group-text">Password</div>
                         <input class="form-control" type="password" name="password" value="<?php echo $email; ?>">
                     </div>
                     <div class="input-group">
                         <p><input type="checkbox" name="remember" /> Remember me</p>
                     </div>
-                    <div class="input-group">
-                        <button class=" form-control btn btn-primary" type="submit" name="login_user">Login</button>
+                    <br>
+                    <div class="input-group mt-3">
+                        <button class=" form-control btn btn-green" type="submit" name="login_user">Login</button>
                     </div>
                 </form>
             </div>

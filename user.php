@@ -120,7 +120,7 @@ if (isset($_GET['logout'])) {
 
 				if (mysqli_num_rows($get_user_followed_forums) > 0) {
 					while ($get_user_followed_forums_rows = mysqli_fetch_assoc($get_user_followed_forums)) {
-						echo '<small><p><a href="sub.php?r=' . $get_user_followed_forums_rows['sname'] . '">' . $get_user_followed_forums_rows['sname'] . '</a></p></small>';
+						echo '<small><a class="followed-subs" href="sub.php?r=' . $get_user_followed_forums_rows['sname'] . '">' . $get_user_followed_forums_rows['sname'] . ',&nbsp;&nbsp;&nbsp;</a></small>';
 					}
 				}
 				?>

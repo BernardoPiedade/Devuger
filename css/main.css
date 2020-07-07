@@ -18,18 +18,19 @@ body{
 }
 
 .green, a.green:link, a.green:visited, a.green:hover{
-    color: #71db71;
+    color: #73AD21;
 }
 
 .btn-green{
-    background-color: #71db71;
-    border-color: #71db71;
+    background-color: #73AD21;
+    border-color: #73AD21;
     color: white;
 }
 
 .btn-green:hover{
-    background-color: #73AD21;
-    border-color: #73AD21;
+    background-color: #71db71;
+    border-color: #71db71;
+    color: white;
 }
 
 .navbar-dark{
@@ -41,7 +42,7 @@ a.nav-link, a.nav-link:visited, a.nav-link:link{
 }
 
 a.nav-link:hover{
-    color: #71db71 !important;
+    color: #73AD21 !important;
 }
 
 .dropdown-menu{
@@ -54,7 +55,7 @@ a.nav-link:hover{
 
 .dropdown-item:hover{
     background-color: #1b1b1b;
-    color: #71db71;
+    color: #73AD21;
 }
 
 .btn-outline-secondary{
@@ -77,26 +78,30 @@ a:hover{
 
 .subs-span
 {
-    color: teal;
+    color: #73AD21;
 }
 
 .subs-span:hover
 {
     text-decoration-line: underline;
-    text-decoration-color: teal;
+    text-decoration-color: #71db71;
     cursor: pointer;
 }
 
 strong.article-title{
     font-family: 'Source Sans Pro', sans-serif;
-    color: rgb(7, 147, 212);
-    text-decoration-color: rgb(7, 147, 212);
+    color: #73AD21;
+    text-decoration-color: #73AD21;
     font-size: 15px;
 }
 
+strong.article-title:hover{
+    color: #71db71;
+}
+
 a.article-b-links, a.article-b-links:link, a.article-b-links:visited, a.article-b-links:hover{
-    color: rgb(7, 147, 212);
-    text-decoration-color: rgb(7, 147, 212);
+    color: #73AD21;
+    text-decoration-color: #73AD21;
 }
 
 h3.post-title{
@@ -117,8 +122,13 @@ h3.post-title{
 }
 
 .form-control, .form-control:focus{
+    border: 1px solid #73AD21;   
+}
+
+.input-group-text{
     border: 1px solid #73AD21;
-    
+    background-color: #73AD21;
+    color: white;
 }
 
 .content{
@@ -136,3 +146,7 @@ h3.post-title{
 }
 
 .is-active { display: block; }
+
+.followed-subs:hover{
+    text-decoration-line: none;
+}

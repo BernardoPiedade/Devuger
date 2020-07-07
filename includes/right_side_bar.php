@@ -10,7 +10,7 @@
             {
                 while($run_query_get_random_posts = mysqli_fetch_assoc($get_random_posts_with_comments))
                 {
-                    echo '<h5><a href="post.php?id=' . $run_query_get_random_posts['id'] . '&title=' . $run_query_get_random_posts['title'] . '">' . $run_query_get_random_posts['title'] . '</a></h5>';
+                    echo '<h6><a class="green" href="post.php?id=' . $run_query_get_random_posts['id'] . '&title=' . $run_query_get_random_posts['title'] . '">' . $run_query_get_random_posts['title'] . '</a></h6>';
                 }
             }
         
