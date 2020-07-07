@@ -148,7 +148,7 @@ if (isset($_GET['logout'])) {
 		<?php if ($username == $logedUser) : ?>
 			<div class="row">
 				<div class="col-md-3"></div>
-				<div class="col-md-6 text-center mt-4" id="Show_Edit_Username_Div">
+				<div class="col-md-6 text-center" id="Show_Edit_Username_Div">
 					<form action="user.php?username=<?php echo $username; ?>" method="post">
 						<div class="input-group">
 							<div class="input-group-text">Current username</div>
@@ -164,7 +164,7 @@ if (isset($_GET['logout'])) {
 						<button type="submit" id="Submit_New_Username" class="btn btn-primary float-right" name="save_changes_username">Save changes</button>
 					</form>
 				</div>
-				<div class="col-md-6 text-center mt-4" id="Show_Edit_Password_Div">
+				<div class="col-md-6 text-center" id="Show_Edit_Password_Div">
 					<form action="user.php?username=<?php echo $username; ?>" method="post">
 						<div class="input-group">
 							<div class="input-group-text">Current password</div>
@@ -180,7 +180,7 @@ if (isset($_GET['logout'])) {
 						<button type="submit" id="Submit_New_Password" class="btn btn-primary float-right" name="save_changes_password">Save changes</button>
 					</form>
 				</div>
-				<div class="col-md-6 text-center mt-4" id="Show_Edit_Email_Div">
+				<div class="col-md-6 text-center" id="Show_Edit_Email_Div">
 					<form action="user.php?username=<?php echo $username; ?>" method="post">
 						<div class="input-group">
 							<div class="input-group-text">Current email</div>
@@ -196,7 +196,7 @@ if (isset($_GET['logout'])) {
 						<button type="submit" id="Submit_New_Email" class="btn btn-primary float-right" name="save_changes_email">Save changes</button>
 					</form>
 				</div>
-				<div class="col-md-6 text-center mt-4" id="Show_Edit_Description_Div">
+				<div class="col-md-6 text-center" id="Show_Edit_Description_Div">
 					<form action="user.php?username=<?php echo $username; ?>" method="post">
 						<div class="input-group">
 							<textarea class="form-control rounded-0" rows="5" name="user_edit_description"><?php echo nl2br($descp); ?></textarea>
@@ -206,7 +206,7 @@ if (isset($_GET['logout'])) {
 						<button type="submit" id="Submit_New_Description" class="btn btn-primary float-right" name="save_changes_descp">Save changes</button>
 					</form>
 				</div>
-				<div class="col-md-6 text-center mt-4" id="Show_Edit_Color_Div">
+				<div class="col-md-6 text-center" id="Show_Edit_Color_Div">
 					<form action="user.php?username=<?php echo $username; ?>" method="post">
 
 						<input type="text" id="hex" style="display: none" name="hexcolor">
