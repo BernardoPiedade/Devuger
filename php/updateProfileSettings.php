@@ -118,7 +118,7 @@
         $new_descp = mysqli_real_escape_string($db, nl2br($_POST['user_edit_description'], true));
 
         $update_descp = mysqli_query($db, "UPDATE users SET descp='$new_descp' WHERE username='$logedUser'");
-        array_push($errors, "Email changed successfully!");
+        array_push($errors, "Decription changed successfully!");
         changeHeader($logedUser);
     }
 

@@ -209,8 +209,8 @@ if (isset($_GET['logout'])) {
 				<div class="col-md-6 text-center" id="Show_Edit_Color_Div">
 					<form action="user.php?username=<?php echo $username; ?>" method="post">
 
-						<input type="text" id="hex" style="display: none" name="hexcolor">
 						<input type="color" id="color">
+						<input type="text" id="hex" style="display: none" name="hexcolor">
 
 						<br>
 						<button class="btn btn-primary float-right ml-2" type="button" id="close_color">Close</button>

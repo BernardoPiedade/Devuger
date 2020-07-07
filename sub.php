@@ -77,7 +77,7 @@ if (isset($_GET['logout'])) {
     unset($_SESSION['username']);
 }
 ?>
-<?php include('php/updateProfileSettings.php'); ?>
+<?php include('php/updateSubSettings.php');?>
 <?php include('includes/header.php'); ?>
 
 <main class="content-wrapper">
@@ -145,8 +145,8 @@ if (isset($_GET['logout'])) {
                         <form action="sub.php?r=<?php echo $forum_name; ?>" method="post"><button class="btn btn-teal w-100" type="submit" name="subscribe">Subscribe</button></form>
                     <?php endif ?>
                 </div>
-                
-                
+
+
 
                 <div>
                     <h4>Rules:</h4>
@@ -158,6 +158,78 @@ if (isset($_GET['logout'])) {
                 </div>
             </div>
         </div>
+        <div class="row">
+            <?php if ($logedUser == $creator) : ?>
+                <div class="col-md-12 text-center mt-5 py-5">
+                    <h5>Settings</h5>
+                    <hr class="border-bottom border-gray">
+
+                    <p><a href="javascript:void();" id="Show_Edit_Username">Edit Sub-Forum Name</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+                        <a href="javascript:void();" id="Show_Edit_Password">Edit Sub-Forum Rules</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+                        <a href="javascript:void();" id="Show_Edit_Description">Edit Sub-forum Description</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+                        <a href="javascript:void();" id="Show_Edit_Profile_Color">Edit Sub-Forum Color</a></p>
+
+                    <?php include('php/errors.php'); ?>
+                </div>
+
+            <?php endif ?>
+        </div>
+        <?php if ($logedUser == $creator) : ?>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 text-center" id="Show_Edit_Username_Div">
+                    <form action="sub.php?r=<?php echo $forum_name; ?>" method="post">
+                        <div class="input-group">
+                            <div class="input-group-text">Current Sub-Forum Name</div>
+                            <input class="form-control" type="text" name="current_subforum_name" required>
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <div class="input-group-text">New Sub-Forum Name</div>
+                            <input class="form-control" type="text" name="new_subforum_name" required>
+                        </div>
+                        <br>
+                        <button class="btn btn-primary float-right ml-2" type="button" id="close_username">Close</button>
+                        <button type="submit" id="Submit_New_Username" class="btn btn-primary float-right" name="save_changes_username">Save changes</button>
+                    </form>
+                </div>
+
+                <div class="col-md-6 text-center" id="Show_Edit_Password_Div">
+                    <form action="sub.php?r=<?php echo $forum_name; ?>" method="post">
+                        <div class="input-group">
+                            <textarea class="form-control rounded-0" rows="5" name="user_edit_rules"><?php echo nl2br($rules); ?></textarea>
+                        </div>
+                        <br>
+                        <button class="btn btn-primary float-right ml-2" type="button" id="close_password">Close</button>
+                        <button type="submit" id="Submit_New_Password" class="btn btn-primary float-right" name="save_changes_password">Save changes</button>
+                    </form>
+                </div>
+
+                <div class="col-md-6 text-center" id="Show_Edit_Description_Div">
+                    <form action="sub.php?r=<?php echo $forum_name; ?>" method="post">
+                        <div class="input-group">
+                            <textarea class="form-control rounded-0" rows="5" name="user_edit_description"><?php echo nl2br($descp); ?></textarea>
+                        </div>
+                        <br>
+                        <button class="btn btn-primary float-right ml-2" type="button" id="close_descp">Close</button>
+                        <button type="submit" id="Submit_New_Description" class="btn btn-primary float-right" name="save_changes_descp">Save changes</button>
+                    </form>
+                </div>
+
+                <div class="col-md-6 text-center" id="Show_Edit_Color_Div">
+                    <form action="sub.php?r=<?php echo $forum_name; ?>" method="post">
+
+                        <input type="color" id="color">
+                        <input type="text" id="hex" style="display: none" name="hexcolor">
+
+                        <br>
+                        <button class="btn btn-primary float-right ml-2" type="button" id="close_color">Close</button>
+                        <button type="submit" id="Submit_New_Color" class="btn btn-primary float-right" name="save_changes_color">Save changes</button>
+                    </form>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        <?php endif ?>
     </div>
 </main>
 
