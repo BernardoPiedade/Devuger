@@ -44,7 +44,12 @@ if (isset($_POST['reg_user'])) {
 
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-  	$password = md5($password_1);//encrypt the password before saving in the database
+    
+    $options = [
+      'cost' => 10
+    ];
+
+    $password = password_hash($password_1, PASSWORD_BCRYPT, $options);
 
   	$query = "INSERT INTO users (username, pass, email, creationDate, uRank) 
   			  VALUES('$username', '$password', '$email', NOW(), 0)";
@@ -69,16 +74,20 @@ if (isset($_POST['login_user'])) {
     }
   
     if (count($errors) == 0) {
-        $password = md5($password);
-        $query = "SELECT * FROM users WHERE username='$username' AND pass='$password'";
-        $results = mysqli_query($db, $query);
-        if (mysqli_num_rows($results) == 1) {
+        
+        $query = "SELECT * FROM users WHERE username='$username'";
+        $run_query = mysqli_query($db, $query);
+        $result = mysqli_fetch_assoc($run_query);
+        $get_pwd = $result['pass'];
+
+        if(password_verify($password, $get_pwd))
+        {
           $_SESSION['username'] = $username;
           $_SESSION['success'] = "You are now logged in";
 
           header('location: index.php');
-        }else {
-            array_push($errors, "Wrong username/password combination");
+        } else {
+          array_push($errors, "Invalid Username or Password");
         }
     }
   }
