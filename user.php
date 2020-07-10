@@ -67,7 +67,7 @@ if (isset($_GET['logout'])) {
 						<p class="pl-2 content"><?php echo nl2br($descp); ?></p>
 					</div>
 				</div>
-				<h3>Latest post made:</h3>
+				<h3>Latest posts made:</h3>
 				<hr class="border-bottom border-gray">
 				<?php
 

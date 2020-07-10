@@ -34,6 +34,25 @@ $e = mysqli_query($db, $w);
 $rowt = mysqli_fetch_assoc($e);
 $color = $rowt['color'];
 
+
+//edit post
+
+if(isset($_POST['send_edited_text'])){
+    $edited_post = mysqli_real_escape_string($db, $_POST['post_content_edit']);
+
+    $update_post = mysqli_query($db, "UPDATE posts SET content='$edited_post' WHERE id='$pid'");
+
+    header("location: post.php?id=".$pid."&title=".$t."");
+}
+
+//delete post
+
+if(isset($_POST['delete_post'])){
+    mysqli_query($db, "DELETE FROM posts WHERE id='$pid'");
+
+    header("location: index.php");
+}
+
 ?>
 <?php include('php/sendcomment.php'); ?>
 <?php
@@ -52,11 +71,44 @@ if (isset($_GET['logout'])) {
             <div class="col-md-9 py-5">
                 <div class="container">
                     <h2 class="post-title"><?php echo $t; ?></h2>
-                    <small>Posted by: <a href="user.php?username=<?php echo $userPostedName; ?>"><?php echo $userPostedName; ?></a>&nbsp;|&nbsp;<a href="sub.php?r=<?php echo $subPostedName; ?>"><?php echo $subPostedName; ?></a>&nbsp;|&nbsp;Uploaded: <?php echo $uploadDate; ?></small>
+                    <small class="pl-2">Posted by: <a href="user.php?username=<?php echo $userPostedName; ?>"><?php echo $userPostedName; ?></a>&nbsp;|&nbsp;Posted in: <a href="sub.php?r=<?php echo $subPostedName; ?>"><?php echo $subPostedName; ?></a>&nbsp;|&nbsp;Uploaded: <?php echo $uploadDate; ?></small>
 
-                    <div class="content-border">
-                        <p class="pl-2 content"><?php echo $content; ?></p>
-                    </div>
+                    <?php if(strlen($content) > 0) : ?>
+                        <div class="content-border">
+                            <p class="pl-2 content"><?php echo $content; ?></p>
+                        </div>
+                    <?php else : ?>
+                        <br><br>
+                    <?php endif ?>
+
+
+                    <?php if ($u == $userPostedName) : ?>
+                        <small class="pl-2"><a href="#" data-toggle="modal" data-target="#exampleModal">Edit</a>&nbsp;|&nbsp;<form method="post" style="display:inline;"><button class="link" type="submit" name="delete_post">Delete post</button></form></small>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Edit post</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" action="post.php?id=<?php echo $pid; ?>&title=<?php echo $t; ?>">
+                                            <textarea class="form-control rounded-0" name="post_content_edit" rows="7"><?php echo $content; ?></textarea>
+                                            <button type="submit" name="send_edited_text" class="btn btn-primary float-right mt-3">Save changes</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif ?>
+
                     <hr>
 
                     <?php

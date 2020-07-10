@@ -96,7 +96,7 @@ if (isset($_GET['logout'])) {
                         <p class="pl-2 content"><?php echo nl2br($descp); ?></p>
                     </div>
                 </div>
-                <h3>Latest post made:</h3>
+                <h3>Latest posts made:</h3>
                 <hr class="border-bottom border-gray">
                 <?php
 
@@ -140,10 +140,16 @@ if (isset($_GET['logout'])) {
             <div class="col-md-3 py-5">
                 <div class="mb-4">
                     <?php if ($user_is_subscribed == true) : ?>
-                        <form action="sub.php?r=<?php echo $forum_name; ?>" method="post"><button class="btn btn-teal w-100" type="submit" name="unsubscribe">You're subscribed</button></form>
+                        <form action="sub.php?r=<?php echo $forum_name; ?>" method="post"><button class="btn btn-teal w-100" type="submit" name="unsubscribe">Unsubscribe</button></form>
                     <?php elseif ($user_is_subscribed == false) : ?>
                         <form action="sub.php?r=<?php echo $forum_name; ?>" method="post"><button class="btn btn-teal w-100" type="submit" name="subscribe">Subscribe</button></form>
                     <?php endif ?>
+                </div>
+
+                <div class="mb-4">
+                        <?php if($user_is_subscribed == true) : ?>
+                            <form action="send_specific_post.php?r=<?php echo $forum_name; ?>" method="post"><button class="btn btn-teal w-100" type="submit" name="create_post">Create new post</button></form>
+                        <?php endif ?>
                 </div>
 
 
