@@ -46,27 +46,36 @@
     if(isset($_POST['save_changes_password']))
     {
         $new_descp = mysqli_real_escape_string($db, nl2br($_POST['user_edit_rules'], true));
+        $name = $_POST['sub_name'];
 
         $update_descp = mysqli_query($db, "UPDATE subforum SET rules='$new_descp' WHERE sname='$name'");
         array_push($errors, "Rules changed successfully!");
+
+        changeHeader($name);
     }
 
     
 
     if(isset($_POST['save_changes_descp']))
     {
-        $new_descp = mysqli_real_escape_string($db, nl2br($_POST['user_edit_rules'], true));
+        $new_descp = mysqli_real_escape_string($db, nl2br($_POST['user_edit_description'], true));
+        $name = $_POST['sub_name'];
 
-        $update_descp = mysqli_query($db, "UPDATE sname SET descp='$new_descp' WHERE sname='$name'");
+        $update_descp = mysqli_query($db, "UPDATE subforum SET descp='$new_descp' WHERE sname='$name'");
         array_push($errors, "Description changed successfully!");
+
+        changeHeader($name);
     }
 
     if(isset($_POST['save_changes_color']))
     {
         $new_color = $_POST['hexcolor'];
+        $name = $_POST['sub_name'];
 
         $update_color = mysqli_query($db, "UPDATE subforum SET color='$new_color' WHERE sname='$name'");
         array_push($errors, "Color changed successfully!");
+
+        changeHeader($name);
     }
 
     function changeHeader($name)
