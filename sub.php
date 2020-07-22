@@ -138,13 +138,19 @@ if (isset($_GET['logout'])) {
 
             </div>
             <div class="col-md-3 py-5">
-                <div class="mb-4">
-                    <?php if ($user_is_subscribed == true) : ?>
-                        <form action="sub.php?r=<?php echo $forum_name; ?>" method="post"><button class="btn btn-teal w-100" type="submit" name="unsubscribe">Unsubscribe</button></form>
-                    <?php elseif ($user_is_subscribed == false) : ?>
-                        <form action="sub.php?r=<?php echo $forum_name; ?>" method="post"><button class="btn btn-teal w-100" type="submit" name="subscribe">Subscribe</button></form>
-                    <?php endif ?>
-                </div>
+				
+				<?php if($forum_name == "Admins Testing" && !$logedUser == "BernardoPiedade"): ?>
+					<p>You can't subscribe to this sub-forum</p>
+				<?php else: ?>	
+
+					<div class="mb-4">
+						<?php if ($user_is_subscribed == true) : ?>
+							<form action="sub.php?r=<?php echo $forum_name; ?>" method="post"><button class="btn btn-teal w-100" type="submit" name="unsubscribe">Unsubscribe</button></form>
+						<?php elseif ($user_is_subscribed == false) : ?>
+							<form action="sub.php?r=<?php echo $forum_name; ?>" method="post"><button class="btn btn-teal w-100" type="submit" name="subscribe">Subscribe</button></form>
+						<?php endif ?>
+					</div>
+				<?php endif ?>
 
                 <div class="mb-4">
                         <?php if($user_is_subscribed == true) : ?>

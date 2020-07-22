@@ -3,7 +3,7 @@
 
     if(isset($_POST['post_send']))
     {
-        $title = mysqli_real_escape_string($db, $_POST['post_title']);
+        $title = mysqli_real_escape_string($db, nl2br($_POST['post_title'], true));
         $content = mysqli_real_escape_string($db, nl2br($_POST['post_content'],true));
         $sub = mysqli_real_escape_string($db, $_POST['post_to']);
 

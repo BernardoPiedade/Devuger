@@ -60,7 +60,7 @@
         <!-- Footer Links -->
 
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3 green">© 2020 Copyright: Devuger.com
+        <div class="footer-copyright text-center py-3 green">© 2020 Copyright: Devuger
         </div>
         <!-- Copyright -->
 
