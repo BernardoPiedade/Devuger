@@ -123,4 +123,3 @@ INSERT INTO subforum (sname, descp, subscribers, color, numPosts, creationDate, 
 /* Admin */
 
 INSERT INTO subforum (sname, descp, subscribers, color, numPosts, creationDate, createdBy) VALUES ('Admins Testing', 'This sub-forum is for admins / developers to inform users about the new updates', 0, '#000', 0, NOW(), 1);
-INSERT INTO subforum (sname, descp, subscribers, color, numPosts, creationDate, createdBy) VALUES ('User\'s Opinion', 'This sub-forum is for you to inform us of bugs and your opinion in general.<br/>Help us improve!', 0, '#000', 0, NOW(), 1);

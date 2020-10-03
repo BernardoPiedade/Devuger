@@ -7,7 +7,7 @@ $title = "Devuger - Find New Forums";
 <?php
 
 if (isset($_GET['search'])) {
-    $search_terms = $_GET['search_terms'];
+    $search_terms = mysqli_real_escape_string($db, $_GET['search_terms']);
 
     // for forums
     $query_forums = "SELECT * FROM subforum WHERE sname LIKE '$search_terms%'";

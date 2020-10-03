@@ -4,6 +4,10 @@ session_start();
 
 $username = $_GET['username'];
 
+if($username == ""){
+	header("location: index.php");
+}
+
 $a = "SELECT * FROM users WHERE username = '$username'";
 $r = mysqli_query($db, $a);
 $rowd = mysqli_fetch_assoc($r);
