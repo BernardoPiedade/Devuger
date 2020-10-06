@@ -86,7 +86,7 @@ if (isset($_GET['logout'])) {
 					}
 					else{
 
-						//find if the user is ubscribed to any sub-forum
+						//find if the user is subscribed to any sub-forum
 						$is_user_subscribed = "SELECT COUNT(subId) AS n FROM subscriptions WHERE userId = '$id'";
 						$run_query = mysqli_query($db, $is_user_subscribed);
 						$get_results = mysqli_fetch_assoc($run_query);
