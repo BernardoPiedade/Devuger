@@ -14,6 +14,6 @@ After that, create a user for you to use during development.
 - Subscription System
 - Search for Users and Sub-Forums
 
-...
+  ...
 
-(More to come)
+  (More to come)
