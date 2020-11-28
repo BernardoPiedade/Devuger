@@ -12,6 +12,7 @@
 
                     <!-- Content -->
                     <h2 class="text-uppercase green">Devuger</h2>
+					<p class="green">A debugger for developers</p>
                     <p class="green">The community you deserve.</p>
 
                 </div>
@@ -60,7 +61,7 @@
         <!-- Footer Links -->
 
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3 green">© 2020 Copyright: Devuger
+        <div class="footer-copyright text-center py-3 green">© 2020 Copyright: ASL Inc.
         </div>
         <!-- Copyright -->
 

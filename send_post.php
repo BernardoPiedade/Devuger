@@ -19,7 +19,7 @@ if (isset($_GET['logout'])) {
                 <div class="col-md-12 text-center">
                     <br><br><br><br>
                     <h1>Oh boy :/ login first!</h1>
-                    <p><a href="login.php">click here to login buddy :)</a></p>
+                    <p><a class="green" href="login.php">click here to login buddy :)</a></p>
                 </div>
             </div>
         </div>

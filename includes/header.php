@@ -71,3 +71,9 @@
 			</div>
 		</nav>
 	</header>
+
+<?php if (!isset($_SESSION['username'])): ?>
+	<?php if ($_SERVER['REQUEST_URI'] != "/devuger/login.php"): ?>
+		<?php include('includes/logged_in.php'); ?>
+	<?php endif ?>
+<?php endif ?>

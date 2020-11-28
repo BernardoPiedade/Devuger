@@ -9,6 +9,7 @@ $r = mysqli_query($db, $a);
 $rowd = mysqli_fetch_assoc($r);
 
 $f_ID = $rowd['id'];
+$sname = $rowd['sname'];
 $descp = $rowd['descp'];
 $subs = $rowd['subscribers'];
 $color = $rowd['color'];
@@ -51,8 +52,8 @@ $offset = ($page_num - 1) * $total_posts_per_page;
 $previous_page = $page_num - 1;
 $next_page = $page_num + 1;
 
-// Get user total num of posts
-$query_user_num_posts = mysqli_query($db, "SELECT COUNT(*) As total_posts FROM posts WHERE userId = '$u_ID'");
+// Get sub total num of posts
+$query_user_num_posts = mysqli_query($db, "SELECT COUNT(*) As total_posts FROM posts WHERE subforumId = '$f_ID'");
 $total_posts = mysqli_fetch_array($query_user_num_posts);
 $total_posts = $total_posts['total_posts'];
 $total_num_of_pages = ceil($total_posts / $total_posts_per_page);
@@ -139,8 +140,14 @@ if (isset($_GET['logout'])) {
             </div>
             <div class="col-md-3 py-5">
 				
-				<?php if($forum_name == "Admins Testing" && !$logedUser == "BernardoPiedade"): ?>
-					<p>You can't subscribe to this sub-forum</p>
+				<?php if($forum_name == "Admins Testing"): ?>
+					<?php if($logedUser != "berni"): ?>
+						<p>You can't subscribe to this sub-forum</p>
+					<?php else: ?>
+						<div class="mb-4">
+                            <form action="send_specific_post.php?r=<?php echo $forum_name; ?>" method="post"><button class="btn btn-teal w-100" type="submit" name="create_post">Create new post</button></form>
+                		</div>
+					<?php endif ?>
 				<?php else: ?>	
 
 					<div class="mb-4">
@@ -171,7 +178,7 @@ if (isset($_GET['logout'])) {
             </div>
         </div>
         <div class="row">
-            <?php if ($logedUser == $creator) : ?>
+            <?php if ($logedUser == "berni") : ?>
                 <div class="col-md-12 text-center mt-5 py-5">
                     <h5>Settings</h5>
                     <hr class="border-bottom border-gray">
@@ -186,63 +193,8 @@ if (isset($_GET['logout'])) {
 
             <?php endif ?>
         </div>
-        <?php if ($logedUser == $creator) : ?>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6 text-center" id="Show_Edit_Username_Div">
-                    <form action="sub.php?r=<?php echo $forum_name; ?>" method="post">
-                        <div class="input-group">
-                            <div class="input-group-text">Current Sub-Forum Name</div>
-                            <input class="form-control" type="text" name="current_subforum_name" required>
-                        </div>
-                        <br>
-                        <div class="input-group">
-                            <div class="input-group-text">New Sub-Forum Name</div>
-                            <input class="form-control" type="text" name="new_subforum_name" required>
-                        </div>
-                        <br>
-                        <button class="btn btn-primary float-right ml-2" type="button" id="close_username">Close</button>
-                        <button type="submit" id="Submit_New_Username" class="btn btn-primary float-right" name="save_changes_username">Save changes</button>
-                    </form>
-                </div>
-
-                <div class="col-md-6 text-center" id="Show_Edit_Password_Div">
-                    <form action="sub.php?r=<?php echo $forum_name; ?>" method="post">
-                        <div class="input-group">
-                            <input type="text" name="sub_name" value="<?php echo $forum_name; ?>" style="display: none;">
-                            <textarea class="form-control rounded-0" rows="5" name="user_edit_rules"><?php echo nl2br($rules); ?></textarea>
-                        </div>
-                        <br>
-                        <button class="btn btn-primary float-right ml-2" type="button" id="close_password">Close</button>
-                        <button type="submit" id="Submit_New_Password" class="btn btn-primary float-right" name="save_changes_password">Save changes</button>
-                    </form>
-                </div>
-
-                <div class="col-md-6 text-center" id="Show_Edit_Description_Div">
-                    <form action="sub.php?r=<?php echo $forum_name; ?>" method="post">
-                        <div class="input-group">
-                            <input type="text" name="sub_name" value="<?php echo $forum_name; ?>" style="display: none;">
-                            <textarea class="form-control rounded-0" rows="5" name="user_edit_description"><?php echo nl2br($descp); ?></textarea>
-                        </div>
-                        <br>
-                        <button class="btn btn-primary float-right ml-2" type="button" id="close_descp">Close</button>
-                        <button type="submit" id="Submit_New_Description" class="btn btn-primary float-right" name="save_changes_descp">Save changes</button>
-                    </form>
-                </div>
-
-                <div class="col-md-6 text-center" id="Show_Edit_Color_Div">
-                    <form action="sub.php?r=<?php echo $forum_name; ?>" method="post">
-
-                        <input type="color" id="color">
-                        <input type="text" id="hex" style="display: none" name="hexcolor">
-                        <input type="text" name="sub_name" value="<?php echo $forum_name; ?>" style="display: none;">
-                        <br>
-                        <button class="btn btn-primary float-right ml-2" type="button" id="close_color">Close</button>
-                        <button type="submit" id="Submit_New_Color" class="btn btn-primary float-right" name="save_changes_color">Save changes</button>
-                    </form>
-                </div>
-                <div class="col-md-3"></div>
-            </div>
+        <?php if ($logedUser == $creator || $logedUser == "berni") : ?>
+            <?php include('includes/sub_settings.php'); ?>
         <?php endif ?>
     </div>
 </main>
