@@ -1,19 +1,3 @@
-# Devuger
-Native PHP Project of a forum-like reddit, for developers
+# Devuger - A debugger for developers
 
-After downloading or cloning the repo, go to your phpmyadmin page and use the sql file that's inside the sql folder.
-After that, create a user for you to use during development.
-
-## Features:
-
-- Login / Registration System
-- Edit User Profile
-- Edit Sub-Forum
-- Send / Edit Post
-- Comment Post
-- Subscription System
-- Search for Users and Sub-Forums
-
-  ...
-
-  (More to come)
+Let's create a community of developers from all around the world. Let's accomplish what StackOverflow failed to, make a community where everyone is wellcomed, no matter how new you are to this developers world.
