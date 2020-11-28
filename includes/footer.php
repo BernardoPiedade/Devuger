@@ -27,7 +27,7 @@
 
                     <ul class="list-unstyled">
                         <li>
-                            <a class="green" href="index.php">Home Page</a>
+                            <a class="green" href="index.php">Homepage</a>
                         </li>
                         <li>
                             <a class="green" href="findforums.php">Find New Forums</a>

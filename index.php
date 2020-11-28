@@ -1,6 +1,6 @@
 <?php include('php/server.php'); ?>
 <?php
-$title = "Devuger - Home Page";
+$title = "Devuger - Homepage";
 
 $u = $_SESSION['username'];
 

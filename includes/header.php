@@ -35,7 +35,7 @@
 			<div class="collapse navbar-collapse" id="navbarsExample04">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="index.php">Home Page</a>
+						<a class="nav-link" href="index.php">Homepage</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="findforums.php">Find New Forums</a>
